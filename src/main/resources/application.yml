@@ -22,6 +22,10 @@ server:
 spring:
   application:
     name: quick_start
+  cache:
+    ehcache:
+      config: classpath:/config/ehcache-spring.xml
+    type: ehcache
   # 模板引擎
   thymeleaf:
     mode: HTML

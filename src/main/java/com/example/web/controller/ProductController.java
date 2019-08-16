@@ -1,5 +1,6 @@
 package com.example.web.controller;
 
+import com.example.common.cache.ProductCache;
 import com.example.web.entity.Product;
 import com.example.web.service.ProductService;
 import io.swagger.annotations.Api;
@@ -26,11 +27,15 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private ProductCache productCache;
+
     @ApiOperation(value="查询所有信息", notes = "展示所有数据信息")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public List<Product> list() {
-        List<Product> products = productService.select();
+//        List<Product> products = productService.select();
+        List<Product> products = productCache.select();
         log.info("查询返回信息：{}", products);
         return products;
     }
