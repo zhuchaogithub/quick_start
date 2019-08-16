@@ -1,7 +1,7 @@
 #quick_start
 ##简介：
-基于springboot2.0的快速搭建项目框架，集成mybatis同时集成Druid实现动态切换数据库，通过logback生成记录日志文件，
-后续将添加Ehcache缓存，redis等项目通用模块。
+基于springboot2.0的快速搭建项目框架，集成mybatis同时集成Druid实现动态切换数据库，集成swagger2实现在线api生成；
+通过logback生成记录日志文件；整合Ehcache缓存实现二级缓存，后续将整合redis等项目通用模块。
 
 ##使用方式：
   ###Druid动态使用：
