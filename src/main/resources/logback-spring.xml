@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="300 seconds">
+
+    <property name="APPNAME" value="quick_start" />
+    <contextName>${APPNAME}</contextName>
+    <property name="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.SSS}) |-%-5level [%thread] %c [%L] -| %msg%n" />
+    <springProfile name="dev">
+        <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>${PATTERN}</pattern>
+                <charset class="java.nio.charset.Charset">UTF-8</charset>
+            </encoder>
+        </appender>
+        <root level="info">
+            <appender-ref ref="stdout" />
+        </root>
+    </springProfile>
+
+    <springProfile name="test">
+        <property name="LOGPATH" value="/home/logs" />
+        <appender name="logfile"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${LOGPATH}/${APPNAME}/${HOSTNAME}/%d{yyyy-MM-dd}/${APPNAME}_%d{yyyy-MM-dd}_%i.log
+                </FileNamePattern>
+                <timeBasedFileNamingAndTriggeringPolicy
+                        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    <maxFileSize>200MB</maxFileSize>
+                </timeBasedFileNamingAndTriggeringPolicy>
+                <MaxHistory>60</MaxHistory>
+            </rollingPolicy>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <immediateFlush>true</immediateFlush>
+                <pattern>${PATTERN}</pattern>
+                <charset>UTF-8</charset>
+            </encoder>
+        </appender>
+        <root level="info">
+            <appender-ref ref="logfile" />
+        </root>
+    </springProfile>
+
+    <springProfile name="pro">
+        <property name="LOGPATH" value="/home/logs" />
+        <appender name="logfile"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${LOGPATH}/${APPNAME}/${HOSTNAME}/%d{yyyy-MM-dd}/${APPNAME}_%d{yyyy-MM-dd}_%i.log
+                </FileNamePattern>
+                <timeBasedFileNamingAndTriggeringPolicy
+                        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    <maxFileSize>200MB</maxFileSize>
+                </timeBasedFileNamingAndTriggeringPolicy>
+                <MaxHistory>365</MaxHistory>
+            </rollingPolicy>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <immediateFlush>true</immediateFlush>
+                <pattern>${PATTERN}</pattern>
+                <charset>UTF-8</charset>
+            </encoder>
+        </appender>
+        <appender name="errorlogfile"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <FileNamePattern>${LOGPATH}/${APPNAME}/${HOSTNAME}/%d{yyyy-MM-dd}/${APPNAME}_%d{yyyy-MM-dd}_error_%i.log
+                </FileNamePattern>
+                <timeBasedFileNamingAndTriggeringPolicy
+                        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    <maxFileSize>200MB</maxFileSize>
+                </timeBasedFileNamingAndTriggeringPolicy>
+                <MaxHistory>60</MaxHistory>
+            </rollingPolicy>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <immediateFlush>true</immediateFlush>
+                <pattern>${PATTERN}</pattern>
+                <charset>UTF-8</charset>
+            </encoder>
+            <!-- 日志级别过滤器 -->
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <!-- 过滤的级别 -->
+                <level>ERROR</level>
+                <!-- 匹配时的操作：接收（记录） -->
+                <onMatch>ACCEPT</onMatch>
+                <!-- 不匹配时的操作：拒绝（不记录） -->
+                <onMismatch>DENY</onMismatch>
+            </filter>
+        </appender>
+        <root level="info">
+            <appender-ref ref="errorlogfile" />
+            <appender-ref ref="logfile" />
+        </root>
+    </springProfile>
+</configuration>
+
+
+
+
+

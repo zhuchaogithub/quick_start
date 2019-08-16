@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.web.dao.ProductDao">
+
+    <resultMap type="Product" id="ProductResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="select" parameterType="Product" resultMap="ProductResult">
+       select * from product t
+    </select>
+
+    <insert id="insert" parameterType="Product">
+       insert into product(id, name )
+        values (#{id}, #{name})
+    </insert>
+</mapper>
