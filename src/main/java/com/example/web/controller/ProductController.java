@@ -32,7 +32,6 @@ public class ProductController {
 
     @ApiOperation(value="查询所有信息", notes = "展示所有数据信息")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    @ResponseBody
     public List<Product> list() {
 //        List<Product> products = productService.select();
         List<Product> products = productCache.select();

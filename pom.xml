@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.example</groupId>
 
-	<artifactId>quicks_tart</artifactId>
+	<artifactId>quick_start</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>quicks_tart</name>
+	<name>quick_start</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
@@ -100,8 +100,26 @@
 			<version>1.18.8</version>
 		</dependency>
 
+        <!-- 引入 redis 依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
 
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-redis</artifactId>
+            <version>2.0.8.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+        </dependency>
+
+
+    </dependencies>
 
 	<build>
 		<plugins>

@@ -1,11 +1,11 @@
 package com.example.common.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 
 /**
@@ -14,7 +14,6 @@ import org.springframework.core.io.ClassPathResource;
  */
 
 @Configuration
-
 public class EhCacheConfig {
     @Value(value = "${spring.cache.ehcache.config}")
     private String ehcacheConfigResource;
@@ -35,6 +34,7 @@ public class EhCacheConfig {
     /**
      * ehcache 主要的管理器
      */
+    @Primary
     @Bean(name = "ehCacheCacheManager")
     public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean bean){
         EhCacheCacheManager ehCacheCacheManager= new EhCacheCacheManager(bean.getObject());
