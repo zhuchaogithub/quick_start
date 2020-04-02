@@ -100,25 +100,11 @@
 			<version>1.18.8</version>
 		</dependency>
 
-        <!-- 引入 redis 依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-            <version>2.0.8.RELEASE</version>
-        </dependency>
-
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-            <version>2.9.0</version>
-        </dependency>
-
-
+		<dependency>
+			<groupId>com.zxc.ratelimit</groupId>
+			<artifactId>spring-boot-starter-ratelimit</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
     </dependencies>
 
 	<build>
