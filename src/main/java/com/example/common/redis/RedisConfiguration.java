@@ -1,5 +1,6 @@
 package com.example.common.redis;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
@@ -46,6 +47,7 @@ public class RedisConfiguration extends CachingConfigurerSupport {
 		};
 	}
 
+    @Qualifier("cacheManager")
 	@Bean
 	public CacheManager cacheManager(RedisConnectionFactory connectionFactory) {
 		RedisCacheManager redisCacheManager = RedisCacheManager.builder(connectionFactory).build();

@@ -1,5 +1,6 @@
 package com.example.common.config;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
@@ -34,7 +35,8 @@ public class EhCacheConfig {
     /**
      * ehcache 主要的管理器
      */
-    @Primary
+//    @Primary
+    @Qualifier("ehCacheCacheManager")
     @Bean(name = "ehCacheCacheManager")
     public EhCacheCacheManager ehCacheCacheManager(EhCacheManagerFactoryBean bean){
         EhCacheCacheManager ehCacheCacheManager= new EhCacheCacheManager(bean.getObject());
