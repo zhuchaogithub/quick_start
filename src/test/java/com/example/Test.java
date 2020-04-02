@@ -9,7 +9,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 /**
- * @program: RuoYi
+ *
  * @description:
  * @author: Mr.Zhu
  * @create: 2019-07-10 09:46

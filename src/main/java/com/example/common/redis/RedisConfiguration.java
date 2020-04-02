@@ -16,7 +16,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import java.lang.reflect.Method;
 
 /**
- * @program: RuoYi
+ *
  *
  * @description:
  *
