@@ -12,6 +12,7 @@ server:
     max-threads: 800
     # Tomcat启动初始化的线程数，默认值25
     min-spare-threads: 30
+#    HTTPS
 #  ssl:
 #    key-store: classpath:XXXX.pfx
 #    key-store-password: XXXX
@@ -26,12 +27,6 @@ spring:
     ehcache:
       config: classpath:/config/ehcache-spring.xml
     type: ehcache
-  # 模板引擎
-  thymeleaf:
-    mode: HTML
-    encoding: utf-8
-    # 禁用缓存
-    cache: false
   # 资源信息
   messages:
     # 国际化资源文件路径
@@ -47,20 +42,20 @@ spring:
     multipart:
       max-file-size:  30MB
       max-request-size:  30MB
-  #redis
-  redis:
-    open: true
-    database: 0
-    host: 192.168.2.141
-    port: 6379
-    password:
-    timeout: 6000
-    jedis:
-      pool:
-        max-active: 8
-        max-wait: -1
-        max-idle: 8
-        min-idle: 0
+#  #redis
+#  redis:
+#    open: true
+#    database: 0
+#    host: 192.168.2.141
+#    port: 6379
+#    password:
+#    timeout: 6000
+#    jedis:
+#      pool:
+#        max-active: 8
+#        max-wait: -1
+#        max-idle: 8
+#        min-idle: 0
 
 # MyBatis
 mybatis:
