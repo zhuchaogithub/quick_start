@@ -58,6 +58,7 @@ public class ProductController {
             @Override
             public String call() {
                 try {
+                    //开始执行耗时操作
                     TimeUnit.SECONDS.sleep(10);
                 } catch (InterruptedException e) {
                     System.out.println("任务被中断。");
@@ -66,12 +67,16 @@ public class ProductController {
             }
         });
         try {
+//            Future<String> future = exec.submit(call);
             String result = future.get(2, TimeUnit.SECONDS);
+            System.out.println(result);
         } catch (InterruptedException |ExecutionException | TimeoutException e) {
-            future.cancel(true);
+            future.cancel(true); //任务停止
             System.out.println("任务超时。");
         }finally {
             System.out.println("清理资源。");
+            // 关闭线程池
+            exec.shutdown();
         }
     }
 
